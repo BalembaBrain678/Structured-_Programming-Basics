@@ -106,6 +106,78 @@ Enter an integer: 7
 7 * 12 = 84
 Notes:
 The program assumes that the user will input a valid integer.
+
+
+# Structure_programming_Basics\problem2.c
+
+This C code defines a function to calculate the minimum monthly payment required to pay off a loan within a specified number of months, considering the interest rate. Here's a breakdown of the code:
+
+1. minimum_monthly_payment Function:
+
+Takes four arguments:
+prev_balance: The previous balance of the loan (initial balance for the first call).
+mpr: The minimum monthly payment rate as a decimal (e.g., 0.02 for 2%).
+r: The annual interest rate as a decimal (e.g., 0.18 for 18%).
+months: The total number of months to simulate the payment schedule.
+Calculates the monthly interest rate: monthly_interest_rate = r / 12.0;
+Initializes the minimum_monthly_payment based on the initial balance and rate.
+Calculates the unpaid balance after the first minimum payment: monthly_unpaid_balance = prev_balance - minimum_monthly_payment;
+Updates the balance for the first month considering interest: updated_balance = monthly_unpaid_balance + (monthly_interest_rate * monthly_unpaid_balance);
+Uses a for loop to iterate through each month:
+Checks if the updated balance becomes non-positive (loan paid off):
+If yes, prints a message indicating the number of months needed to pay off the loan and slightly increases the minimum payment (to account for potential rounding errors) before exiting the loop using break.
+Otherwise, calculates the minimum payment again for each month based on the previous balance.
+Prints the minimum payment and remaining balance for each month.
+Updates the unpaid balance and total balance for the next month considering the minimum payment and interest.
+Returns the final updated balance (which might be slightly positive due to rounding errors).
+2. main Function:
+
+Declares variables for balance, minimum payment rate, annual interest rate, previous balance (used for calculations), and number of months.
+Prompts the user to enter the initial loan balance, validates the input to be a positive number, and handles invalid input with an error message and program termination.
+Stores the initial balance in prev_balance.
+Repeats the same process for minimum payment rate, annual interest rate, and number of months, ensuring positive values and handling errors.
+Calls the minimum_monthly_payment function, passing the initial values and simulating the payment schedule for the specified number of months.
+Returns 0 to indicate successful program execution.
+
+# structure_Programming_Basics\remainder.c
+
+The provided C code calculates the division of two numbers entered by the user and prints the result. However, it has a potential issue when dividing by zero. Here's a breakdown with an improvement:
+
+Explanation:
+
+Header Inclusion:
+
+#include <stdio.h>: This line includes the standard input/output library, providing functions like printf for printing and scanf for getting user input.
+Variable Declaration:
+
+float a, b, c;: Declares three floating-point variables a, b, and c. a and b will store the numbers entered by the user, and c will store the result of the division.
+User Input:
+
+printf("Enter the two number\n");: Prompts the user to enter two numbers.
+scanf("%f%f",&a,&b);: Reads the two floating-point numbers entered by the user and stores them in a and b using the scanf function.
+Division and Check for Remainder:
+
+c = (a / b);: Calculates the division of a by b and stores the result in c.
+Important Improvement:
+
+Handle Division by Zero: It's crucial to check for division by zero before performing the calculation. You can add an if statement to handle this case:
+
+C
+if (b == 0) {
+    printf("Error: Cannot divide by zero.\n");
+} else {
+    c = (a / b);
+    // Rest of the code to print the result or handle remainder
+}
+Use code with caution.
+Conditional Printing:
+
+if (c == 1) { ... } else { ... }: This conditional statement checks the value of c.
+If c is equal to 1 (indicating no remainder), it prints a message stating there's no remainder and the answer using printf.
+Otherwise (if there's a remainder), it prints a message indicating the remainder using printf.
+Program Termination:
+
+return 0;: This line indicates successful program termination and returns a value of 0 to the operating system.
 It generates the multiplication table by iterating from 1 to 12 and printing the result of multiplying the input integer with each number.
 The table is formatted nicely for readability.
 This program efficiently generates
